@@ -8,6 +8,12 @@ enum EBall_State
     EBS_On_Platform
 };
 
+struct test
+{
+    int test = 1;
+    double d = 3.1415;
+};
+
 class ABall;
 class AHit_Checker
 {
