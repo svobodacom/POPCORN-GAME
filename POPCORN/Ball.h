@@ -8,11 +8,12 @@ enum EBall_State
     EBS_On_Platform
 };
 
-struct test
+struct MathConstant
 {
     int test = 2;
     unsigned un = 29;
     double d = 3.1415;
+    long long l = 2023L;
 };
 
 class Square
