@@ -10,8 +10,15 @@ enum EBall_State
 
 struct test
 {
-    int test = 1;
+    int test = 2;
+    unsigned un = 29;
     double d = 3.1415;
+};
+
+class Square
+{
+public:
+    Square() = default;
 };
 
 class ABall;
