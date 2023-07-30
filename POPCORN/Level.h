@@ -7,8 +7,6 @@ enum ELetter_Type
 {
     ELT_None,
     ELT_O,
-    ELT_1,
-    ELT_2
 };
 
 class AFalling_Letter

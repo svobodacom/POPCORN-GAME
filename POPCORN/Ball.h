@@ -8,13 +8,6 @@ enum EBall_State
     EBS_On_Platform
 };
 
-struct MathConstant
-{
-    int test = 1;
-    double d = 3.1415;
-    long long l = 2023L;
-};
-
 class ABall;
 class AHit_Checker
 {
