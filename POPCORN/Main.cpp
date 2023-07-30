@@ -100,13 +100,13 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    // через поля структуры задаем размеры окна
    window_rect.left = 0;
    window_rect.top = 0;
-   window_rect.right = 960;
-   window_rect.bottom = 600;
+   window_rect.right = 320 * 3;
+   window_rect.bottom = 200 * 3;
    // корректируем размеры клиентской области нашего окна
    AdjustWindowRect(&window_rect, WS_OVERLAPPEDWINDOW, TRUE);
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      0, 0, window_rect.right, window_rect.bottom, nullptr, nullptr, hInstance, nullptr);
+      0, 0, window_rect.right - window_rect.left, window_rect.bottom - window_rect.top, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
@@ -133,11 +133,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+
+   int wmId;
+   HDC hdc;
+   PAINTSTRUCT ps;
     switch (message)
     {
     case WM_COMMAND:
         {
-            int wmId = LOWORD(wParam);
+            wmId = LOWORD(wParam);
             // Parse the menu selections:
             switch (wmId)
             {
@@ -154,10 +158,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_PAINT:
         {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
+            hdc = BeginPaint(hWnd, &ps);
             // TODO: Add any drawing code that uses hdc here...
-            // наша функция первого фрейма
             Engine.Draw_Frame(hdc, ps.rcPaint);
             EndPaint(hWnd, &ps);
         }

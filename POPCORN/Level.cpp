@@ -93,6 +93,7 @@ void AFalling_Letter::Draw_Brick_Letter(HDC hdc)
         return; // ПАДАЮЩИЕ БУКВЫ МОГУТ БЫТЬ ТОЛЬКО ОТ КИРПИЧЕЙ ТАКОГО ТИПА
 
     Rotation_Step = Rotation_Step % 16; // корректировка шага вращения и угла поворота
+
     if (Rotation_Step < 8)
         rotation_angle = 2.0 * M_PI / 16.0 * (double)Rotation_Step;
     else
@@ -129,6 +130,7 @@ void AFalling_Letter::Draw_Brick_Letter(HDC hdc)
         // выводим фон
         SelectObject(hdc, back_pen);
         SelectObject(hdc, back_brush);
+
         Rectangle(hdc, X, Y + brick_half_height - AsConfig::Global_Scale, X + AsConfig::Brick_Width * AsConfig::Global_Scale, Y + brick_half_height);
 
         // выводим передний план
@@ -138,8 +140,6 @@ void AFalling_Letter::Draw_Brick_Letter(HDC hdc)
     }
     else
     {
-        SetGraphicsMode(hdc, GM_ADVANCED);
-
         // настраиваем матрицу переворота буквы
         xform.eM11 = 1.0f;
         xform.eM12 = 0.0f;
