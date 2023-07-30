@@ -19,15 +19,18 @@ void AsEngine::Init_Engine(HWND hwnd)
     Level.Init();
     Platform.Init();
     Ball.Init();
-    Ball.Set_State(EBS_Normal,Platform.X_Pos + Platform.Width / 2);
     Border.Init();
 
     ABall::Add_Hit_Checker(&Border);
     ABall::Add_Hit_Checker(&Level);
     ABall::Add_Hit_Checker(&Platform);
 
+    Level.Set_Current_Level(ALevel::Level_01);
+    Ball.Set_State(EBS_Normal, Platform.X_Pos + Platform.Width / 2);
+
     Platform.Set_State(EPS_Normal);
     Platform.Redraw_Platform();
+
     // заказываем у Windows периодические сообщения с интервалом 1 сек / количество кадров
     SetTimer(AsConfig::Hwnd, Timer_ID, 1000 / AsConfig::FPS, 0);
 }
@@ -47,9 +50,9 @@ void AsEngine::Draw_Frame(HDC hdc, RECT& paint_area)
         Draw_Brick_Letter(hdc, 20 + i * Cell_Width * Global_Scale, 130, EBT_Red, ELT_O, i);
     }*/
 
-    Ball.Draw(hdc, paint_area);
     Border.Draw(hdc, paint_area);
     Platform.Draw(hdc, paint_area);
+    Ball.Draw(hdc, paint_area);
 }
 
 
