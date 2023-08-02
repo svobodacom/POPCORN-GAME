@@ -73,7 +73,7 @@
       <Filter>Active_Brick</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
-      <Filter>Header Files</Filter>
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +115,7 @@
       <Filter>Active_Brick</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
