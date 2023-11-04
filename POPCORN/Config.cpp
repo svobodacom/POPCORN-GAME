@@ -6,6 +6,10 @@ AColor::AColor(unsigned char r, unsigned char g, unsigned char b) : R(r), G(g), 
 
 }
 
+int AColor::Get_RGB() const
+{
+   return RGB(R, G, B);
+}
 
 // инициализация статических переменных
 bool AsConfig::Level_Has_Floor = false;

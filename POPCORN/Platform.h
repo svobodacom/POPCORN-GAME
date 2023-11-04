@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Ball.h"
 
 
@@ -16,6 +16,8 @@ class AsPlatform : public AHit_Checker
 {
 public:
     AsPlatform();
+
+	 ~AsPlatform();
 
     virtual bool Check_Hit(double next_x_pos, double next_y_pos, ABall* ball);
 
@@ -38,10 +40,15 @@ private:
 	void Draw_Roll_In_State(HDC hdc, RECT& paint_area);
 	void Draw_Expanding_Roll_In_State(HDC hdc, RECT& paint_area);
 	bool Reflect_On_Circle(double next_x_pos, double next_y_pos, double platform_ball_x_offset, ABall* ball);
+	bool Get_Platform_Image_Stroke_Color(int x, int y, HPEN& color_pen, int& stroke_len);
 
 	EPlatform_State Platform_State;
 	int Inner_Width;
 	int Rolling_Step;
+
+	int Normal_Platform_Image_Width, Normal_Platform_Image_Height;
+	// пиксели изображения платформы на фоне
+	int* Normal_Platform_Image;
 
 	static const int Normal_Width = 28;
 
@@ -49,6 +56,7 @@ private:
 
 	RECT Platform_Rect, Prev_Platform_Rect;
 
+	AColor Highlight_Pen_Color, Platform_Circle_Pen_Color, Platform_Inner_Pen_Color;
 	HPEN Highlight_Pen, Platform_Circle_Pen, Platform_Inner_Pen;
 	HBRUSH Platform_Circle_Brush, Platform_Inner_Brush;
 
